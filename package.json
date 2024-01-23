@@ -1,11 +1,12 @@
 {
-  "name": "eslint",
+  "name": "progblackcoursework",
   "version": "1.0.0",
   "description": "",
   "main": "node.js",
   "scripts": {
-    "start": "nodemon node.js",
-    "test": "jest"
+    "start": "nodemon runServer.js",
+    "test": "jest",
+    "pretest": "eslint base.js node.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +16,9 @@
   },
   "devDependencies": {
     "eslint": "^8.56.0",
+    "eslint-config-standard": "^17.1.0",
     "jest": "^29.7.0",
-    "nodemon": "^3.0.2"
+    "nodemon": "^3.0.2",
+    "supertest": "^6.3.4"
   }
 }

@@ -1,14 +1,1 @@
-{"info":[
-    {"objects":
-    [
-    {"id":0,"name":"abcde","description":"This is a short description","categoryID":0},
-    {"id":1,"name":"15","description":"This is a short description","categoryID":1},
-    {"id":2,"name":"qabcef12","description":"This is a short description","categoryID":1},
-    {"id":3,"name":"abcd","description":"This is a short description","categoryID":1}
-    ]},
-    
-    {"categories":
-    [{"id":0,"name":"category1"},
-    {"id":1,"name":"category2"}]
-    }
-]}
+{"info":[{"objects":[{"id":0,"name":"abcde","description":"This is a short description","categoryID":0},{"id":1,"name":"15","description":"This is a short description","categoryID":1},{"id":2,"name":"qabcef12","description":"This is a short description","categoryID":1},{"id":3,"name":"abcd","description":"This is a short description","categoryID":1},{"id":4,"name":"abcdefweag","description":"","categoryID":2}]},{"categories":[{"id":0,"name":"category1"},{"id":1,"name":"category2"},{"id":2,"name":"wrhesh"}]}]}

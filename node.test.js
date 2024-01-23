@@ -1,7 +1,12 @@
-const sum = require('red/base');
+'use strict';
 
-x='<ul><button class="btn btn-link"'+'id="id2">item2</button><br>description2<br></br></ul>'
+const request = require('supertest');
+const app = require('./node');
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(displaySearchResults([{"id":2,"name":"item2","description":"description2"}])).toBe(x);
-});
+describe('Test the things service', () => {
+    test('GET /random succeeds', () => {
+        return request(app)
+	    .get('/random')
+	    .expect(200);
+    });
+})
