@@ -6,6 +6,7 @@ module.exports = {
       "quotes": 0,
       "dot-notation": 0,
       "quote-props": 0,
-      "brace-style": 0
+      "brace-style": 0,
+      "no-undef": 0
     }
 };

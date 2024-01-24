@@ -10,15 +10,19 @@ function opensearching () {
 };
 
 function openadding () {
-   document.getElementById('searchSection').innerHTML = "<p>Type in the details about the board game</p><div class='mb-3'><label for='nameInput' class='form-label'>Name</label><input type='text' class='form-control' id='nameInput' placeholder='cats'></div><div class='mb-3'><label for='categoryInput' class='form-label'>Genre</label><input type='text' class='form-control' id='categoryInput' placeholder='cats'></div><div class='mb-3'><label for='nameInput' class='form-label'>Description</label><input type='text' class='form-control' id='descriptionInput' placeholder='cats'></div><div id='submitAddition'><button type='button' class='btn btn-outline-success'>Submit</button></div>";
+   document.getElementById('searchSection').innerHTML = "<p>Type in the details about the board game</p><p>Game info:</p><div class='mb-3'><label for='nameInput' class='form-label'>Name</label><input type='text' class='form-control' id='nameInput' placeholder='cats'></div><div class='mb-3'><label for='descriptionInput' class='form-label'>Description</label><input type='text' class='form-control' id='descriptionInput' placeholder='cats'></div><div class='mb-3'><label for='minInput' class='form-label'>Max Number of Players</label><input type='text' class='form-control' id='minInput' placeholder='cats'></div><div class='mb-3'><label for='maxInput' class='form-label'>Min Number of Players</label>    <input type='text' class='form-control' id='maxInput' placeholder='cats'></div><p>Genre info:</p><div class='mb-3'><label for='categoryInput' class='form-label'>Name</label><input type='text' class='form-control' id='categoryInput' placeholder='cats'></div><div class='mb-3'><label for='categoryDescription' class='form-label'>Description (not needed if genre already exists)</label><input type='text' class='form-control' id='categoryDescription' placeholder='cats'></div><div id='submitAddition'><button type='button' class='btn btn-outline-success'>Submit</button></div>";
    document.getElementById('submitAddition').addEventListener('click', add);
 }
 
 async function add () {
+   try {
    const objectname = document.getElementById('nameInput').value;
    const objectcategory = document.getElementById('categoryInput').value;
    const objectdescription = document.getElementById('descriptionInput').value;
-   const data = JSON.stringify({ "name": objectname, "category": objectcategory, "description": objectdescription });
+   const objectmax = document.getElementById('maxInput').value;
+   const objectmin = document.getElementById('minInput').value;
+   const objectcategorydesc = document.getElementById('categoryDescription').value;
+   const data = JSON.stringify({ "name": objectname, "category": objectcategory, "description": objectdescription, "max": objectmax, "min": objectmin, "categorydescription": objectcategorydesc });
    const response = await fetch("http://127.0.0.1:8090/add", {
       method: "POST",
       // need to set headers to make sure the server knows to invoke the JSON parser
@@ -39,9 +43,14 @@ async function add () {
       html = html + '<br>This element already exists';
     }
     document.getElementById('searchSection').innerHTML = html;
+   }
+    catch {
+      alert('Your internet connection has failed. Try again later.');
+}
 }
 
 async function randomsearch () {
+   try {
    const response = await fetch('http://127.0.0.1:8090/random');
    if (response.ok) {
       displayPage(await response.json());
@@ -49,9 +58,14 @@ async function randomsearch () {
    else {
       alert('aaaahhhh');
    }
+}
+   catch {
+      alert('Your internet connection has failed. Try again later.');
+}
 };
 
 async function search (event) {
+   try {
    const inp = document.getElementById("searchInput").value;
    const response = await fetch('http://127.0.0.1:8090/search/'.concat(inp));
    if (response.ok) {
@@ -61,12 +75,17 @@ async function search (event) {
    else {
       alert("Your internet connection has failed");
    }
+   }
+   catch {
+      alert('Your internet connection has failed. Try again later.');
+}
 };
 
 function displaySearchResults (arr) {
+   try {
    let html = '<ul>';
    for (const i in arr) {
-      html = html + '<button class="btn btn-link"' + 'id="id'.concat(String(arr[i]["id"])) + '">' + arr[i]["name"] + '</button><br>Player count:  Max - ' + String(arr[i]["maxplayers"]) + ' Min - ' + String(arr[i]["minplayers"]) + '<br>';
+      html = html + '<button class="btn btn-link"' + 'id="id'.concat(String(arr[i]["id"])) + '">' + arr[i]["name"] + '</button><br>Player count: ' + String(arr[i]["minplayers"]) + '-' + String(arr[i]["maxplayers"]) + '<br>';
    }
    html = html + '</ul>';
    document.getElementById('searchSection').innerHTML = html;
@@ -76,8 +95,13 @@ function displaySearchResults (arr) {
    }
    return html;
 }
+   catch {
+      alert('Your internet connection has failed. Try again later.');
+}
+}
 
 async function displayPageByID () {
+   try {
    let a = this.id;
    a = a.substring(2, a.length);
    const response = await fetch('http://127.0.0.1:8090/find/'.concat(String(a)));
@@ -88,15 +112,20 @@ async function displayPageByID () {
    else {
       alert('error');
    }
+   }
+   catch {
+      alert('Your internet connection has failed. Try again later.');
+}
 }
 
 async function displayPage (element) {
+   try {
    let html = '<h3>' + element['name'] + '</h3><br>';
    html = html + 'Description:<br>' + element['description'] + '<br><br>Max player count: ' + element['maxplayers'] + '<br>' + 'Min player count: ' + element['minplayers'] + '<br><br>';
    const response = await fetch('http://127.0.0.1:8090/category/'.concat(String(element["id"])));
    if (response.ok) {
       const category = await response.json();
-      html = html + 'This game is part of the <button class="btn btn-link"' + 'id="idc'.concat(String(category["id"])) + '">' + category["name"] + '</button>genre<br>Click the link to find out more<br>';
+      html = html + 'This game is part of the <button class="btn btn-link"' + 'id="idc'.concat(String(category["id"])) + '">' + category["name"] + '</button>genre<br>Click the link above to find out more about the genre<br>';
       const idw = "idc".concat(String(category["id"]));
    document.getElementById('searchSection').innerHTML = html;
    document.getElementById(idw).addEventListener('click', displayCategoryPageByID);
@@ -104,9 +133,14 @@ async function displayPage (element) {
    else {
       alert('aaaahh');
    }
+   }
+   catch {
+   alert('Your internet connection has failed. Try again later.');
+}
 }
 
 async function displayCategoryPageByID () {
+   try {
    let a = this.id;
    a = a.substring(3, a.length);
    const response = await fetch('http://127.0.0.1:8090/findc/'.concat(String(a)));
@@ -119,17 +153,21 @@ async function displayCategoryPageByID () {
       alert('aaaahhhh');
    }
 }
+catch {
+   alert('Your internet connection has failed. Try again later.');
+}
+}
 
 function explain1 () {
-   document.getElementById('explanation').innerHTML = '<p>This opens the search tool to be used</p><br><br><br>';
+   document.getElementById('explanation').innerHTML = '<p>This allows you to search for a board game by typing in text</p><br><br><br>';
 }
 
 function explain2 () {
-   document.getElementById('explanation').innerHTML = '<p>This opens a random item</p><br><br><br>';
+   document.getElementById('explanation').innerHTML = '<p>This opens the page of a random board game</p><br><br><br>';
 }
 
 function explain3 () {
-   document.getElementById('explanation').innerHTML = '<p>This allows you to add an item to the database</p><br><br><br>'
+   document.getElementById('explanation').innerHTML = '<p>This allows you to add a board game to the database</p><br><br><br>';
 }
 
 function removeexplanation () {

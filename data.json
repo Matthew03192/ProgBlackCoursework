@@ -1,7 +1,7 @@
 {"info":[
     {"objects":
     [
-        {"id":0,"name":"Avalon","description":"A game where each player is given a hidden good or evil role and the good team have to work to complete missions","maxplayers":10,"minplayers":5,"categoryID":0},
+        {"id":0,"name":"Avalon","description":"A game where each player is given a hidden good or evil role and the good team have to work to complete missions while the evil team try to stop them","maxplayers":10,"minplayers":5,"categoryID":0},
         {"id":1,"name":"Citadels","description":"A game where players pick a hidden role each round to try and collect coins to buy districts","maxplayers":8,"minplayers":2,"categoryID":0},
         {"id":2,"name":"Lost Cities","description":"A game where two players play cards to gain points from completing 5 expeditions","maxplayers":2,"minplayers":2,"categoryID":1},
         {"id":3,"name":"Celestia","description":"A game where players take turns being captain off the ship and have to complete tasks by playing cards, other players have the opportunity to leave the ship if they believe the captain cannot complete their task","maxplayers":6,"minplayers":2,"categoryID":2},
