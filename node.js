@@ -10,7 +10,8 @@ app.get("/search/:term", function (req, resp) {
     elements = JSON.parse(fs.readFileSync(dataFile))["info"][0]["objects"];
     const outputs = [];
     for (const i in elements) {
-        if (elements[i]["name"].includes(req.params.term)) {
+        const x = elements[i]["name"].toLowerCase();
+        if (x.includes(req.params.term.toLowerCase())) {
             outputs.push(elements[i]);
         }
     }

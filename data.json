@@ -1,1 +1,19 @@
-{"info":[{"objects":[{"id":0,"name":"abcde","description":"This is a short description","categoryID":0},{"id":1,"name":"15","description":"This is a short description","categoryID":1},{"id":2,"name":"qabcef12","description":"This is a short description","categoryID":1},{"id":3,"name":"abcd","description":"This is a short description","categoryID":1},{"id":4,"name":"abcdefweag","description":"","categoryID":2},{"id":5,"name":"abc","description":"ghi","categoryID":3}]},{"categories":[{"id":0,"name":"category1"},{"id":1,"name":"category2"},{"id":2,"name":"wrhesh"},{"id":3,"name":"def"}]}]}
+{"info":[
+    {"objects":
+    [
+        {"id":0,"name":"Avalon","description":"A game where each player is given a hidden good or evil role and the good team have to work to complete missions","maxplayers":10,"minplayers":5,"categoryID":0},
+        {"id":1,"name":"Citadels","description":"A game where players pick a hidden role each round to try and collect coins to buy districts","maxplayers":8,"minplayers":2,"categoryID":0},
+        {"id":2,"name":"Lost Cities","description":"A game where two players play cards to gain points from completing 5 expeditions","maxplayers":2,"minplayers":2,"categoryID":1},
+        {"id":3,"name":"Celestia","description":"A game where players take turns being captain off the ship and have to complete tasks by playing cards, other players have the opportunity to leave the ship if they believe the captain cannot complete their task","maxplayers":6,"minplayers":2,"categoryID":2},
+        {"id":4,"name":"Coup","description":"A game where players are given cards which allow them to take different actions to gain coins and pay for coups on opponents, players are able to lie about the cards they have if they think they won't be caught","maxplayers":6,"minplayers":2,"categoryID":0},
+        {"id":5,"name":"Wingspan","description":"A game about collecting different birds","maxplayers":4,"minplayers":1,"categoryID":1}]
+    },
+    {"categories":
+    [
+        {"id":0,"name":"Hidden Roles","description":"Games around secretly doing actions based on a role that you are given at the beginning of the game"},
+        {"id":1,"name":"Strategy","description":"Games about carefully planning out moves and executing a strategy"},
+        {"id":2,"name":"Casual","description":"Casual games which can be easily explained to and played by everyone"}
+    ]
+    }
+]
+}

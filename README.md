@@ -3,7 +3,7 @@
 Things to do:
 Jest
 Eslint - done
-API Docs - done
+API Docs - need post request
 Theme
 Improve Appearence
 Check code
