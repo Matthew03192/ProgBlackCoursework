@@ -2,8 +2,7 @@
 
 Things to do:
 Jest
-Postman
-Eslint
+Eslint - mostly done
 API Docs
 Theme
 Improve Appearence

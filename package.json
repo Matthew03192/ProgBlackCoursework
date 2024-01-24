@@ -4,9 +4,8 @@
   "description": "",
   "main": "node.js",
   "scripts": {
-    "start": "nodemon runServer.js",
-    "test": "jest",
-    "pretest": "eslint base.js node.js"
+    "start": "nodemon node.js",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
