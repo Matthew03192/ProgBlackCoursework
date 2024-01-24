@@ -10,14 +10,15 @@ function opensearching () {
 };
 
 function openadding () {
-   document.getElementById('searchSection').innerHTML = "<p>Type in the details</p><div class='mb-3'><label for='nameInput' class='form-label'>Name</label><input type='text' class='form-control' id='nameInput' placeholder='cats'></div><div class='mb-3'><label for='categoryInput' class='form-label'>Category</label><input type='text' class='form-control' id='categoryInput' placeholder='cats'></div><div id='submitAddition'><button type='button' class='btn btn-outline-success'>Submit</button></div>";
+   document.getElementById('searchSection').innerHTML = "<p>Type in the details</p><div class='mb-3'><label for='nameInput' class='form-label'>Name</label><input type='text' class='form-control' id='nameInput' placeholder='cats'></div><div class='mb-3'><label for='categoryInput' class='form-label'>Category</label><input type='text' class='form-control' id='categoryInput' placeholder='cats'></div><div class='mb-3'><label for='nameInput' class='form-label'>Description</label><input type='text' class='form-control' id='descriptionInput' placeholder='cats'></div><div id='submitAddition'><button type='button' class='btn btn-outline-success'>Submit</button></div>";
    document.getElementById('submitAddition').addEventListener('click', add);
 }
 
 async function add () {
    const objectname = document.getElementById('nameInput').value;
    const objectcategory = document.getElementById('categoryInput').value;
-   const data = JSON.stringify({ "name": objectname, "category": objectcategory });
+   const objectdescription = document.getElementById('descriptionInput').value;
+   const data = JSON.stringify({ "name": objectname, "category": objectcategory, "description": objectdescription });
    const response = await fetch("http://127.0.0.1:8090/add", {
       method: "POST",
       // need to set headers to make sure the server knows to invoke the JSON parser
@@ -53,7 +54,6 @@ async function randomsearch () {
 async function search (event) {
    const inp = document.getElementById("searchInput").value;
    const response = await fetch('http://127.0.0.1:8090/search/'.concat(inp));
-
    if (response.ok) {
       const data = await response.json();
       displaySearchResults(data);

@@ -2,8 +2,8 @@
 
 Things to do:
 Jest
-Eslint - mostly done
-API Docs
+Eslint - done
+API Docs - done
 Theme
 Improve Appearence
 Check code

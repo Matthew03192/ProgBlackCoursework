@@ -67,6 +67,7 @@ app.get("/category/:id", function (req, resp) {
 app.post("/add", function (req, resp) {
     const newName = req.body["name"];
     const newCategory = req.body["category"];
+    const newDescription = req.body["description"];
     const fileData = JSON.parse(fs.readFileSync(dataFile));
     elements = fileData["info"][0]["objects"];
     const categories = fileData["info"][1]["categories"];
@@ -95,7 +96,7 @@ app.post("/add", function (req, resp) {
             categories.push({ "id": highestCategory + 1, "name": newCategory });
             categoryIdToUse = highestCategory + 1;
         }
-        elements.push({ "id": highestElement + 1, "name": newName, "description": "", "categoryID": categoryIdToUse });
+        elements.push({ "id": highestElement + 1, "name": newName, "description": newDescription, "categoryID": categoryIdToUse });
         console.log(fileData);
         fs.writeFileSync(dataFile, JSON.stringify(fileData));
     }
@@ -104,7 +105,7 @@ app.post("/add", function (req, resp) {
     }
 );
 
-app.get("/objects/:id", function (req, resp) {
+app.get("/elements/:id", function (req, resp) {
     let out = "";
     elements = JSON.parse(fs.readFileSync(dataFile))["info"][0]["objects"];
     const categories = JSON.parse(fs.readFileSync(dataFile))["info"][1]["categories"];
